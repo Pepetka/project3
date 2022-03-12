@@ -311,8 +311,6 @@ html {
 
   &__textarea {
     width: 100%;
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
   }
 
   &__input {
@@ -330,6 +328,8 @@ html {
     box-shadow: 0px 1px 0px 0px rgba(0, 0, 1, 0.05),
       1px 0px 0px 0px rgba(0, 0, 1, 0.05), -1px 0px 0px 0px rgba(0, 0, 1, 0.05);
     outline: none;
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
   }
 
   &__btn {
@@ -502,12 +502,6 @@ html {
     align-items: center;
   }
 
-  &__content1,
-  &__content2,
-  &__content3 {
-    display: none;
-  }
-
   &__btn {
     width: 12.1rem;
     @extend %button;
@@ -517,9 +511,7 @@ html {
   display: flex;
   flex-direction: column;
 
-  &__btn1,
-  &__btn2,
-  &__btn3 {
+  &__btn {
     width: 11.2rem;
     height: 11.2rem;
     border-radius: 0;
@@ -530,9 +522,7 @@ html {
     color: #fff;
     @include OpenSans-B;
   }
-  &__btn1:hover,
-  &__btn2:hover,
-  &__btn3:hover {
+  &__btn:hover {
     cursor: pointer;
   }
 
@@ -548,6 +538,7 @@ html {
   }
 }
 .content-tab {
+  display: none;
   flex-direction: column;
   margin-left: 10rem;
 
@@ -579,7 +570,7 @@ html {
   }
 
   &__img {
-    width: 45%;
+    height: 40%;
   }
 
   &__img img {
@@ -633,9 +624,7 @@ html {
     flex-direction: row;
     margin-bottom: 10rem;
 
-    &__btn1,
-    &__btn2,
-    &__btn3 {
+    &__btn {
       width: 8rem;
       height: 8rem;
       border-radius: 0;
@@ -1141,11 +1130,18 @@ html {
   padding: 10.8rem 0 8rem 0;
 }
 .contact-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
   &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__wrapper {
     width: 100%;
     display: flex;
     justify-content: space-between;

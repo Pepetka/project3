@@ -20,18 +20,20 @@
       <div class="container">
         <div class="header__body">
           <div class="header__logo">
-            <img src="img/header__logo.png" alt="logo">
+            <a href="#home">
+              <img src="img/header__logo.png" alt="logo">
+            </a>
           </div>
           <div class="header__burger">
             <span></span>
           </div>
           <nav class="header__menu">
             <ul class="header__list">
-              <li><a class="header__link" href="#">Features</a></li>
-              <li><a class="header__link" href="#">About</a></li>
-              <li><a class="header__link" href="#">Pricing</a></li>
-              <li><a class="header__link" href="#">Reviews</a></li>
-              <li><a class="header__link" href="#">Contact</a></li>
+              <li><a class="header__link" href="#features">Features</a></li>
+              <li><a class="header__link" href="#about">About</a></li>
+              <li><a class="header__link" href="#pricing">Pricing</a></li>
+              <li><a class="header__link" href="#reviews">Reviews</a></li>
+              <li><a class="header__link" href="#contact">Contact</a></li>
             </ul>
           </nav>
         </div>
@@ -56,11 +58,11 @@
               <p>Try Your <span>free</span> Trial Today</p>
             </div>
             <form class="form__textarea" action="#">
-              <input class="form__input" type="text" placeholder="Name">
-              <input class="form__input" type="text" placeholder="Email">
-              <input class="form__input" type="text" placeholder="Password">
+              <input class="form__input" name="name" type="text" placeholder="Name">
+              <input class="form__input" name="email" type="text" placeholder="Email">
+              <input class="form__input" name="password" type="text" placeholder="Password">
+              <button class="form__btn">Get Started</button>
             </form>
-            <button class="form__btn">Get Started</button>
           </div>
         </div>
       </div>
@@ -88,15 +90,16 @@
       </div>
     </section>
 
+    <p><a name="features"></a></p>
     <section class="feature1">
       <div class="container">
         <div class="feature1__body">
           <div class="tabs">
-            <button class="tabs__btn1 active-btn">TAB 1</button>
-            <button class="tabs__btn2">TAB 2</button>
-            <button class="tabs__btn3">TAB 3</button>
+            <button class="tabs__btn tabs__btn1 tab1">TAB 1</button>
+            <button class="tabs__btn tab2">TAB 2</button>
+            <button class="tabs__btn tabs__btn3 tab3">TAB 3</button>
           </div>
-          <div class="content-tab feature1__content1 active-tab">
+          <div class="content-tab tab1">
             <div class="content-tab__information">
               <div class="content-tab__text">
                 <h2 class="content-tab__title">1. Tabs with soft transitioning effect.</h2>
@@ -114,7 +117,7 @@
             </div>
             <button class="feature1__btn">Download</button>
           </div>
-          <div class="content-tab feature1__content2">
+          <div class="content-tab tab2">
             <div class="content-tab__information">
               <div class="content-tab__text">
                 <h2 class="content-tab__title">2. Tabs with soft transitioning effect.</h2>
@@ -129,7 +132,7 @@
             </div>
             <button class="feature1__btn">Download</button>
           </div>
-          <div class="content-tab feature1__content3">
+          <div class="content-tab tab3">
             <div class="content-tab__information">
               <div class="content-tab__text">
                 <h2 class="content-tab__title">3. Tabs with soft transitioning effect.</h2>
@@ -212,6 +215,7 @@
       </div>
     </section>
 
+    <p><a name="about"></a></p>
     <section class="process">
       <div class="container">
         <div class="process__body">
@@ -253,6 +257,7 @@
       </div>
     </section>
 
+    <p><a name="pricing"></a></p>
     <section class="pricing">
       <div class="container">
         <div class="pricing__body">
@@ -375,6 +380,7 @@
       </div>
     </section>
 
+    <p><a name="reviews"></a></p>
     <section class="testimonials">
       <div class="container">
         <div class="testimonials__body">
@@ -447,6 +453,7 @@
       </div>
     </section>
 
+    <p><a name="contact"></a></p>
     <section class="contact">
       <div class="container">
         <div class="contact__body">
@@ -457,14 +464,16 @@
           </div>
           <div class="contact-panel">
             <form class="contact-panel__form" action="#">
-              <div class="contact-panel__autor">
-                <input type="text" class="contact-panel__input" placeholder="Name">
-                <input type="text" class="contact-panel__input" placeholder="Email">
-                <input type="text" class="contact-panel__input" placeholder="Subject">
+              <div class="contact-panel__wrapper">
+                <div class="contact-panel__autor">
+                  <input type="text" name="name" class="contact-panel__input" placeholder="Name">
+                  <input type="text" name="email" class="contact-panel__input" placeholder="Email">
+                  <input type="text" name="subject" class="contact-panel__input" placeholder="Subject">
+                </div>
+                <textarea class="contact-panel__textarea" name="message" placeholder="Message" rows="3"></textarea>
               </div>
-              <textarea class="contact-panel__textarea" placeholder="Message" rows="3"></textarea>
+              <button class="contact-panel__btn">Send Message</button>
             </form>
-            <button class="contact-panel__btn">Send Message</button>
           </div>
         </div>
       </div>

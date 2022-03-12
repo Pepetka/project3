@@ -1,27 +1,105 @@
-$(document).ready(function() {
-  $('.header__burger').click(function(event) {
-    $('.header__burger,.header__menu').toggleClass('active');
-    $('body').toggleClass('lock');
-  });
+'use strict';
 
-  $('.tabs__btn1').click(function (event) { 
-    $('.tabs__btn1').addClass('active-btn');
-    $('.feature1__content1').addClass('active-tab');
-    $('.tabs__btn2,.tabs__btn3').removeClass('active-btn');
-    $('.feature1__content2,.feature1__content3').removeClass('active-tab');
-  });
+window.addEventListener('DOMContentLoaded', () => {
+  function tabs() {
+    const btns = document.querySelectorAll('.tabs__btn'),
+      content = document.querySelectorAll('.content-tab');
 
-  $('.tabs__btn2').click(function (event) { 
-    $('.tabs__btn2').addClass('active-btn');
-    $('.feature1__content2').addClass('active-tab');
-    $('.tabs__btn1,.tabs__btn3').removeClass('active-btn');
-    $('.feature1__content1,.feature1__content3').removeClass('active-tab');
-  });
+    content[0].classList.add('active-tab');
+    btns[0].classList.add('active-btn');
 
-  $('.tabs__btn3').click(function (event) { 
-    $('.tabs__btn3').addClass('active-btn');
-    $('.feature1__content3').addClass('active-tab');
-    $('.tabs__btn1,.tabs__btn2').removeClass('active-btn');
-    $('.feature1__content1,.feature1__content2').removeClass('active-tab');
-  });
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        if (!btn.classList.contains('active-btn')) {
+          btns.forEach((el) => {
+            el.classList.remove('active-btn');
+          });
+
+          btn.classList.add('active-btn');
+
+          content.forEach((el) => {
+            if (el.classList.contains(btn.classList[btn.classList.length - 2])) {
+              el.classList.add('active-tab');
+            } else {
+              el.classList.remove('active-tab');
+            }
+          });
+        }
+      });
+    });
+  }
+
+  function burger() {
+    const burger = document.querySelector('.header__burger'),
+      menu = document.querySelector('.header__menu');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('active');
+      menu.classList.toggle('active');
+
+      document.querySelector('body').classList.toggle('lock');
+    });
+  }
+
+  function form() {
+    const forms = document.querySelectorAll('form'),
+      inputs = document.querySelectorAll('[placeholder]'),
+      message = {
+        saccess: 'Отправлено',
+        failture: 'Ошибка...',
+        loading: 'Идет отправка...'
+      };
+
+    const postData = async (url, data) => {
+      document.querySelector('.status').textContent = message.loading;
+
+      let result = await fetch(url, {
+        method: 'POST',
+        body: data
+      });
+
+      return await result.text();
+    };
+
+    const clearForms = (inputs) => {
+      inputs.forEach((input) => {
+        input.value = '';
+      });
+    };
+
+    forms.forEach((form) => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let status = document.createElement('div');
+        status.classList.add('status');
+        status.style.fontSize = '16px';
+        status.style.color = '#ff8b38';
+        status.style.textAlign = 'center';
+        status.style.padding = '10px';
+        form.parentNode.appendChild(status);
+
+        const formData = new FormData(form);
+
+        postData('server.php', formData)
+          .then((res) => {
+            console.log(res);
+            status.textContent = message.saccess;
+          })
+          .catch(() => {
+            status.textContent = message.failture;
+          })
+          .finally(() => {
+            setTimeout(() => {
+              clearForms(inputs);
+              status.remove();
+            }, 5000);
+          });
+      });
+    });
+  }
+
+  tabs();
+  burger();
+  form();
 });
